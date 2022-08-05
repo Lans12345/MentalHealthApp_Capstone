@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health/auth/login_page.dart';
+import 'package:mental_health/screens/diary/write_diary.dart';
 import 'package:mental_health/screens/profile/profile_page.dart';
+import 'package:mental_health/screens/quote/view_quotes.dart';
+import 'package:mental_health/services/error.dart';
 import 'package:mental_health/widgets/dialog.dart';
 import 'package:mental_health/widgets/home_container.dart';
 import 'package:mental_health/widgets/image.dart';
@@ -8,6 +11,8 @@ import 'package:mental_health/widgets/text.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class HomePage extends StatelessWidget {
   GetStorage box = GetStorage();
@@ -94,13 +99,29 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              homeContainer('diary.png', 'Self Diary', Colors.blue[200]!,
-                  Colors.blue[300]!, Colors.blue[400]!),
+              GestureDetector(
+                onTap: () async {
+                  bool hasInternet =
+                      await InternetConnectionChecker().hasConnection;
+                  if (hasInternet == true) {
+                    Get.to(() => WriteDiary(), transition: Transition.zoom);
+                  } else {
+                    error('No Internet Connection');
+                  }
+                },
+                child: homeContainer('diary.png', 'Self Diary',
+                    Colors.blue[200]!, Colors.blue[300]!, Colors.blue[400]!),
+              ),
               const SizedBox(
                 height: 20,
               ),
-              homeContainer('quotes.png', "Quote's Motivator",
-                  Colors.pink[200]!, Colors.pink[300]!, Colors.pink[400]!),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => ViewQuote(), transition: Transition.zoom);
+                },
+                child: homeContainer('quotes.png', "Quote's Motivator",
+                    Colors.pink[200]!, Colors.pink[300]!, Colors.pink[400]!),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -109,8 +130,21 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              homeContainer('phone.png', 'TCD Support', Colors.purple[200]!,
-                  Colors.purple[300]!, Colors.purple[400]!),
+              GestureDetector(
+                onTap: () async {
+                  String driverContactNumber = '09090104355';
+                  final _text = 'tel:$driverContactNumber';
+                  if (await canLaunch(_text)) {
+                    await launch(_text);
+                  }
+                },
+                child: homeContainer(
+                    'phone.png',
+                    'TCD Support',
+                    Colors.purple[200]!,
+                    Colors.purple[300]!,
+                    Colors.purple[400]!),
+              ),
               const SizedBox(
                 height: 30,
               ),

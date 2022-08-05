@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-textReg(String txt, double size, Color color) {
+Widget textReg(String txt, double size, Color color) {
   return Text(
     txt,
-    overflow: TextOverflow.ellipsis,
     style: TextStyle(
       fontSize: size,
       color: color,
@@ -12,7 +11,7 @@ textReg(String txt, double size, Color color) {
   );
 }
 
-textBold(String txt, double size, Color color) {
+Widget textBold(String txt, double size, Color color) {
   return Text(
     txt,
     overflow: TextOverflow.ellipsis,
