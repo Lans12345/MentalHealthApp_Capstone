@@ -3,6 +3,7 @@ import 'package:mental_health/auth/login_page.dart';
 import 'package:mental_health/screens/diary/write_diary.dart';
 import 'package:mental_health/screens/profile/profile_page.dart';
 import 'package:mental_health/screens/quote/view_quotes.dart';
+import 'package:mental_health/screens/survey/survey_page.dart';
 import 'package:mental_health/services/error.dart';
 import 'package:mental_health/widgets/dialog.dart';
 import 'package:mental_health/widgets/home_container.dart';
@@ -125,8 +126,13 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              homeContainer('qa.png', 'MHA Based QA', Colors.blue[100]!,
-                  Colors.blue[200]!, Colors.blue[300]!),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => const SurveyPage(), transition: Transition.zoom);
+                },
+                child: homeContainer('qa.png', 'MHA Based QA',
+                    Colors.blue[100]!, Colors.blue[200]!, Colors.blue[300]!),
+              ),
               const SizedBox(
                 height: 20,
               ),

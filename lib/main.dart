@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mental_health/screens/onboarding_screen.dart';
 import 'package:mental_health/services/firebase_options.dart';
 import 'package:mental_health/services/splash_screens/loadingHome.dart';
-import 'package:mental_health/services/splash_screens/loadingLogin.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return LoadingScreenToHome();
             } else {
-              return LoadingScreenToLogIn();
+              return const OnboardingPage();
             }
           }),
     );

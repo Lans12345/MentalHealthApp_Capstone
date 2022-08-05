@@ -58,3 +58,27 @@ dialogWithClose(String title, String message, Widget gt) {
     ),
   );
 }
+
+resultDialog(String title, String message, Widget gt) {
+  return Get.defaultDialog(
+    radius: 5.0,
+    title: title,
+    middleText: message,
+    barrierDismissible: false,
+    confirm: Padding(
+      padding: const EdgeInsets.only(left: 0),
+      child: TextButton(
+        onPressed: () {
+          Get.back();
+          Get.off(() => gt, transition: Transition.zoom);
+        },
+        child: const Text(
+          'Continue',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    ),
+  );
+}

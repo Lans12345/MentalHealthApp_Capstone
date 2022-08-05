@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mental_health/widgets/appbar.dart';
 
 import 'package:mental_health/widgets/image.dart';
 import 'package:mental_health/widgets/text.dart';
@@ -10,23 +11,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: textReg(
-          'Users Profile',
-          22,
-          Colors.white,
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.blue[200]!,
-              Colors.blue[300]!,
-              Colors.blue[400]!,
-            ]),
-          ),
-        ),
-      ),
+      appBar: appbar("Users Profile"),
       body: Center(
         child: Column(
           children: [
