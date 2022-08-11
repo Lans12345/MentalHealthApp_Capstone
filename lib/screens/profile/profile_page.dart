@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
               height: 20,
             ),
             textBold(
-              box.read('name'),
+              box.read('name') ?? 'Not Available',
               18,
               Colors.black,
             ),
@@ -39,7 +39,7 @@ class ProfilePage extends StatelessWidget {
               height: 20,
             ),
             textBold(
-              box.read('gender'),
+              box.read('gender') ?? 'Not Available',
               18,
               Colors.black,
             ),
@@ -55,7 +55,7 @@ class ProfilePage extends StatelessWidget {
               height: 20,
             ),
             textBold(
-              box.read('address'),
+              box.read('address') ?? 'Not Available',
               18,
               Colors.black,
             ),

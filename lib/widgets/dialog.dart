@@ -11,7 +11,6 @@ dialog(String title, String message, Widget gt) {
       padding: const EdgeInsets.only(left: 0),
       child: TextButton(
         onPressed: () {
-          Get.back();
           Get.off(() => gt, transition: Transition.zoom);
         },
         child: const Text(

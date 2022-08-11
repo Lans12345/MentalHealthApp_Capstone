@@ -8,7 +8,7 @@ Widget questions(String number, String question) {
       const SizedBox(
         height: 10,
       ),
-      textBold('$number of 7', 12, Colors.black),
+      textBold('$number of 10', 12, Colors.black),
       const SizedBox(
         height: 10,
       ),

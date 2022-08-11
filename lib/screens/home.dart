@@ -3,8 +3,9 @@ import 'package:mental_health/auth/login_page.dart';
 import 'package:mental_health/screens/diary/write_diary.dart';
 import 'package:mental_health/screens/profile/profile_page.dart';
 import 'package:mental_health/screens/quote/view_quotes.dart';
-import 'package:mental_health/screens/survey/survey_page.dart';
+import 'package:mental_health/screens/survey/survey.dart';
 import 'package:mental_health/services/error.dart';
+import 'package:mental_health/widgets/appbar.dart';
 import 'package:mental_health/widgets/dialog.dart';
 import 'package:mental_health/widgets/home_container.dart';
 import 'package:mental_health/widgets/image.dart';
@@ -78,20 +79,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: textBold('Home', 24, Colors.white),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.blue[400]!,
-              Colors.pink[300]!,
-              Colors.purple[400]!,
-            ]),
-          ),
-        ),
-      ),
+      appBar: appbar('Home'),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -111,7 +99,7 @@ class HomePage extends StatelessWidget {
                   }
                 },
                 child: homeContainer('diary.png', 'Self Diary',
-                    Colors.blue[200]!, Colors.blue[300]!, Colors.blue[400]!),
+                    Colors.blue[100]!, Colors.blue[200]!, Colors.blue[200]!),
               ),
               const SizedBox(
                 height: 20,
@@ -121,17 +109,17 @@ class HomePage extends StatelessWidget {
                   Get.to(() => ViewQuote(), transition: Transition.zoom);
                 },
                 child: homeContainer('quotes.png', "Quote's Motivator",
-                    Colors.pink[200]!, Colors.pink[300]!, Colors.pink[400]!),
+                    Colors.pink[100]!, Colors.pink[200]!, Colors.pink[200]!),
               ),
               const SizedBox(
                 height: 20,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const SurveyPage(), transition: Transition.zoom);
+                  Get.to(() => const Survey(), transition: Transition.zoom);
                 },
                 child: homeContainer('qa.png', 'MHA Based QA',
-                    Colors.blue[100]!, Colors.blue[200]!, Colors.blue[300]!),
+                    Colors.blue[100]!, Colors.blue[200]!, Colors.blue[200]!),
               ),
               const SizedBox(
                 height: 20,
@@ -147,9 +135,9 @@ class HomePage extends StatelessWidget {
                 child: homeContainer(
                     'phone.png',
                     'TCD Support',
+                    Colors.purple[100]!,
                     Colors.purple[200]!,
-                    Colors.purple[300]!,
-                    Colors.purple[400]!),
+                    Colors.purple[200]!),
               ),
               const SizedBox(
                 height: 30,

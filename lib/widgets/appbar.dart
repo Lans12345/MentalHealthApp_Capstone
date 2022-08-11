@@ -8,9 +8,9 @@ PreferredSizeWidget appbar(String title) {
     flexibleSpace: Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
-          Colors.blue[400]!,
-          Colors.pink[300]!,
-          Colors.purple[400]!,
+          Colors.blue[200]!,
+          Colors.pink[200]!,
+          Colors.purple[200]!,
         ]),
       ),
     ),

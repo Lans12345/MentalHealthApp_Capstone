@@ -20,13 +20,19 @@ Widget homeContainer(
         c3,
       ]),
       borderRadius: BorderRadius.circular(20),
+      /*image: const DecorationImage(
+        image: AssetImage(
+          'assets/images/logo.png',
+        ),
+      ),
+      */
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         textBold(title, 24, Colors.white),
         const SizedBox(
-          width: 50,
+          width: 40,
         ),
         image('assets/images/' + path, 45, 45, EdgeInsets.zero),
       ],

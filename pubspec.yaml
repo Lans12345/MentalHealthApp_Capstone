@@ -44,6 +44,8 @@ dependencies:
   introduction_screen:
   internet_connection_checker:
   liquid_swipe: ^2.0.0
+  percent_indicator:
+  syncfusion_flutter_gauges: ^19.1.54
 
 dev_dependencies:
   flutter_test:
