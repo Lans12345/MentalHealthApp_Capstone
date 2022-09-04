@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const Survey(), transition: Transition.zoom);
+                  Get.off(() => const Survey(), transition: Transition.zoom);
                 },
                 child: homeContainer('qa.png', 'MHA Based QA',
                     Colors.blue[100]!, Colors.blue[200]!, Colors.blue[200]!),

@@ -27,15 +27,18 @@ Widget homeContainer(
       ),
       */
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        textBold(title, 24, Colors.white),
-        const SizedBox(
-          width: 40,
-        ),
-        image('assets/images/' + path, 45, 45, EdgeInsets.zero),
-      ],
+    child: Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          textBold(title, 24, Colors.white),
+          const SizedBox(
+            width: 40,
+          ),
+          image('assets/images/' + path, 45, 45, EdgeInsets.zero),
+        ],
+      ),
     ),
   );
 }

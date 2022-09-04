@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health/screens/home.dart';
 import 'package:mental_health/screens/survey/surveys/survey_anxiety.dart';
 import 'package:mental_health/screens/survey/surveys/survey_depression.dart';
 import 'package:mental_health/screens/survey/surveys/survey_stress.dart';
@@ -40,7 +41,8 @@ class _SurveyState extends State<Survey> {
             ),
             button(
               onPressed: () {
-                Get.to(() => const SurveyStress(), transition: Transition.zoom);
+                Get.off(() => const SurveyStress(),
+                    transition: Transition.zoom);
               },
               color: Colors.blue[200]!,
               label: 'STRESS',
@@ -50,7 +52,7 @@ class _SurveyState extends State<Survey> {
             ),
             button(
               onPressed: () {
-                Get.to(() => const SurveyAnxiety(),
+                Get.off(() => const SurveyAnxiety(),
                     transition: Transition.zoom);
               },
               color: Colors.green[200]!,
@@ -65,7 +67,7 @@ class _SurveyState extends State<Survey> {
               ),
               color: Colors.purple[200],
               onPressed: () {
-                Get.to(() => const SurveyDepression(),
+                Get.off(() => const SurveyDepression(),
                     transition: Transition.zoom);
               },
               child: Padding(
@@ -77,7 +79,25 @@ class _SurveyState extends State<Survey> {
                 ),
               ),
             ),
-            
+            const Expanded(child: SizedBox(height: 50)),
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Colors.teal,
+              onPressed: () {
+                Get.off(() => HomePage(), transition: Transition.zoom);
+              },
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: textReg(
+                  'Back to Home',
+                  12,
+                  Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),
