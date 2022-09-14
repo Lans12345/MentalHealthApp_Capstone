@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health/auth/signup_page.dart';
+import 'package:mental_health/screens/admin/admin_home.dart';
 import 'package:mental_health/screens/home.dart';
 import 'package:mental_health/services/authentication/anonymous.dart';
 import 'package:mental_health/services/error.dart';
@@ -15,18 +16,19 @@ class LoginPage extends StatelessWidget {
 
   GetStorage box = GetStorage();
 
+  late String adminPassword;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
-        reverse: true,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 50,
+                height: 20,
               ),
               image('assets/images/logo.png', 250, 250, EdgeInsets.zero),
               const SizedBox(
@@ -161,6 +163,86 @@ class LoginPage extends StatelessWidget {
                         textReg('Login with Google', 18.0, Colors.black),
                       ],
                     ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 60, right: 60, top: 10),
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) => Padding(
+                        padding: const EdgeInsets.only(left: 30, right: 30),
+                        child: AlertDialog(
+                          title: const Text(
+                            'Administrator Password',
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'QRegular'),
+                          ),
+                          content: TextFormField(
+                              obscureText: true,
+                              onChanged: (_input) {
+                                adminPassword = _input;
+                              },
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(Icons.lock))),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  if (adminPassword == 'admin123') {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AdminHome()));
+                                  } else {
+                                    showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext context) =>
+                                          Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 30, right: 30),
+                                        child: AlertDialog(
+                                          title: const Text(
+                                            'Invalid Password',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'QRegular'),
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: textReg(
+                                                    'Close', 13, Colors.black)),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: textBold('Continue', 13, Colors.black)),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10, bottom: 10, left: 15, right: 15),
+                    child:
+                        textReg('Login as Admininistrator', 18.0, Colors.black),
                   ),
                 ),
               ),
