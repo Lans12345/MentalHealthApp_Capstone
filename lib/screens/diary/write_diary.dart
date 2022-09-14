@@ -98,8 +98,10 @@ class _WriteDiaryState extends State<WriteDiary> {
         ),
         body: TabBarView(children: [
           StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection('Diary').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('Diary')
+                  .where('name', isEqualTo: box.read('name'))
+                  .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -281,7 +283,14 @@ class _WriteDiaryState extends State<WriteDiary> {
                     bool hasInternet =
                         await InternetConnectionChecker().hasConnection;
                     if (hasInternet == true) {
-                      postDiary(title, content, getDate());
+                      postDiary(
+                          title,
+                          content,
+                          getDate(),
+                          box.read('name'),
+                          box.read('contactNumber'),
+                          box.read('address'),
+                          box.read('profilePicture'));
                       dialog('Upload Status', 'Uploaded Successfully!',
                           HomePage());
                     } else {

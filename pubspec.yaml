@@ -46,6 +46,8 @@ dependencies:
   liquid_swipe: ^2.0.0
   percent_indicator:
   syncfusion_flutter_gauges: ^19.1.54
+  firebase_storage:
+  image_picker:
 
 dev_dependencies:
   flutter_test:

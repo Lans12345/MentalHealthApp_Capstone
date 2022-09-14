@@ -1,8 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mental_health/auth/login_page.dart';
 import 'package:mental_health/services/error.dart';
 import 'package:mental_health/widgets/dialog.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:path/path.dart' as path;
 import 'package:mental_health/widgets/text.dart';
 import 'package:get_storage/get_storage.dart';
 import '../widgets/image.dart';
@@ -25,6 +30,82 @@ class _SignUpPageState extends State<SignUpPage> {
   late String name = '';
   late String contactNumber = '';
   late String address = '';
+
+  var hasLoaded = false;
+
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
+
+  late String fileName = '';
+
+  late File imageFile;
+
+  late String imageURL = '';
+
+  Future<void> uploadPicture(String inputSource) async {
+    final picker = ImagePicker();
+    XFile pickedImage;
+    try {
+      pickedImage = (await picker.pickImage(
+          source: inputSource == 'camera'
+              ? ImageSource.camera
+              : ImageSource.gallery,
+          maxWidth: 1920))!;
+
+      fileName = path.basename(pickedImage.path);
+      imageFile = File(pickedImage.path);
+
+      try {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: AlertDialog(
+                title: Row(
+              children: const [
+                CircularProgressIndicator(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'Loading . . .',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'QRegular'),
+                ),
+              ],
+            )),
+          ),
+        );
+
+        await firebase_storage.FirebaseStorage.instance
+            .ref('Users/$fileName')
+            .putFile(imageFile);
+        imageURL = await firebase_storage.FirebaseStorage.instance
+            .ref('Users/$fileName')
+            .getDownloadURL();
+
+        setState(() {
+          hasLoaded = true;
+        });
+
+        Navigator.of(context).pop();
+      } on firebase_storage.FirebaseException catch (error) {
+        if (kDebugMode) {
+          print(error);
+        }
+      }
+    } catch (err) {
+      if (kDebugMode) {
+        print(err);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +127,34 @@ class _SignUpPageState extends State<SignUpPage> {
               height: 20,
             ),
             textBold('Login Credentials', 12.0, Colors.grey),
+            const SizedBox(
+              height: 20,
+            ),
+            hasLoaded
+                ? CircleAvatar(
+                    maxRadius: 50,
+                    minRadius: 50,
+                    backgroundImage: NetworkImage(imageURL),
+                  )
+                : GestureDetector(
+                    onTap: () {
+                      uploadPicture('gallery');
+                    },
+                    child: const CircleAvatar(
+                      maxRadius: 50,
+                      minRadius: 50,
+                      backgroundImage: AssetImage('assets/images/profile.png'),
+                      child: Icon(
+                        Icons.add,
+                        size: 32,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+            const SizedBox(
+              height: 10,
+            ),
+            textBold('Click to Upload Photo', 12.0, Colors.grey),
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
               child: TextFormField(
@@ -241,6 +350,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     box.write('contactNumber', '+639' + contactNumber);
                     box.write('gender', gender);
                     box.write('address', address);
+                    box.write('profilePicture', imageURL);
                     dialog('', 'Account Created Succesfully!', LoginPage());
                   } else {
                     error('Invalid');

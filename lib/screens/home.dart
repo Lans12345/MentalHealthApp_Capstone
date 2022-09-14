@@ -39,10 +39,11 @@ class HomePage extends StatelessWidget {
                 accountEmail:
                     textBold(box.read('contactNumber') ?? '', 12, Colors.white),
                 accountName: textBold(box.read('name') ?? '', 18, Colors.white),
-                currentAccountPicture: const CircleAvatar(
+                currentAccountPicture: CircleAvatar(
                   minRadius: 50,
                   maxRadius: 50,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
+                  backgroundImage: NetworkImage(box.read('profilePicture') ??
+                      'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
                 ),
               ),
               ListTile(

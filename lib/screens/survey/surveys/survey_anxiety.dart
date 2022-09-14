@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health/screens/survey/questions.dart';
 import 'package:mental_health/screens/survey/survey.dart';
+import 'package:mental_health/services/cloud_function/anxiety_data.dart';
 import 'package:mental_health/widgets/appbar.dart';
 import 'package:mental_health/widgets/text.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SurveyAnxiety extends StatefulWidget {
   const SurveyAnxiety({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
   var _isVisible2 = false;
 
   var count = 0;
+
+  final box = GetStorage();
 
   res() {
     if (count >= 15) {
@@ -50,6 +54,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
   dialogMeter() {
     return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) => AlertDialog(
               title: Text(
                 'Result: ' + res(),
@@ -108,7 +113,16 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               ),
               actions: <Widget>[
                 FlatButton(
-                  onPressed: () => Get.off(() => const Survey()),
+                  onPressed: () {
+                    addAnxiety(
+                        box.read('name'),
+                        box.read('contactNumber'),
+                        box.read('gender'),
+                        box.read('address'),
+                        res(),
+                        box.read('profilePicture'));
+                    Get.off(() => const Survey());
+                  },
                   child: const Text(
                     'Continue',
                     style: TextStyle(

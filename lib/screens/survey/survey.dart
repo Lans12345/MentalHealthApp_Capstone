@@ -52,7 +52,7 @@ class _SurveyState extends State<Survey> {
             ),
             button(
               onPressed: () {
-                Get.off(() => const SurveyAnxiety(),
+                Get.to(() => const SurveyAnxiety(),
                     transition: Transition.zoom);
               },
               color: Colors.green[200]!,
@@ -67,7 +67,7 @@ class _SurveyState extends State<Survey> {
               ),
               color: Colors.purple[200],
               onPressed: () {
-                Get.off(() => const SurveyDepression(),
+                Get.to(() => const SurveyDepression(),
                     transition: Transition.zoom);
               },
               child: Padding(
@@ -86,7 +86,7 @@ class _SurveyState extends State<Survey> {
               ),
               color: Colors.teal,
               onPressed: () {
-                Get.off(() => HomePage(), transition: Transition.zoom);
+                Get.to(() => HomePage(), transition: Transition.zoom);
               },
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

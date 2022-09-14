@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mental_health/widgets/appbar.dart';
 
-import 'package:mental_health/widgets/image.dart';
 import 'package:mental_health/widgets/text.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -18,7 +17,13 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            image('assets/images/profile.png', 120, 120, EdgeInsets.zero),
+            CircleAvatar(
+              minRadius: 70,
+              maxRadius: 70,
+              backgroundImage: NetworkImage(
+                box.read('profilePicture'),
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),

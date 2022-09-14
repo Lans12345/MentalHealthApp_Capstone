@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mental_health/screens/survey/questions.dart';
 import 'package:mental_health/screens/survey/survey.dart';
+import 'package:mental_health/services/cloud_function/stress_data.dart';
 import 'package:mental_health/widgets/appbar.dart';
 import 'package:mental_health/widgets/text.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SurveyStress extends StatefulWidget {
   const SurveyStress({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _SurveyStressState extends State<SurveyStress> {
   var _isVisible2 = false;
 
   var count = 0;
+
+  final box = GetStorage();
 
   res() {
     if (count > 27 || count == 27) {
@@ -45,6 +49,7 @@ class _SurveyStressState extends State<SurveyStress> {
 
   dialogMeter() {
     return showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) => AlertDialog(
               title: Text(
@@ -104,7 +109,16 @@ class _SurveyStressState extends State<SurveyStress> {
               ),
               actions: <Widget>[
                 FlatButton(
-                  onPressed: () => Get.off(() => const Survey()),
+                  onPressed: () {
+                    addStress(
+                        box.read('name'),
+                        box.read('contactNumber'),
+                        box.read('gender'),
+                        box.read('address'),
+                        res(),
+                        box.read('profilePicture'));
+                    Get.off(() => const Survey());
+                  },
                   child: const Text(
                     'Continue',
                     style: TextStyle(
