@@ -127,10 +127,6 @@ class AdminHome extends StatelessWidget {
                                         data.docs[index]['contactNumber'],
                                     10,
                                     Colors.grey),
-                                textReg(
-                                    'Address: ' + data.docs[index]['address'],
-                                    10,
-                                    Colors.grey),
                               ],
                             ),
                             children: [
@@ -206,8 +202,6 @@ class AdminHome extends StatelessWidget {
                                 textReg(
                                     data.docs[index]['name'], 12, Colors.grey),
                                 textReg(data.docs[index]['contactNumber'], 10,
-                                    Colors.grey),
-                                textReg(data.docs[index]['address'], 10,
                                     Colors.grey),
                               ],
                             ),
