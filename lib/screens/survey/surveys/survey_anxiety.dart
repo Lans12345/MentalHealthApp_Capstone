@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/screens/home.dart';
 import 'package:mental_health/screens/survey/questions.dart';
 import 'package:mental_health/screens/survey/survey.dart';
 import 'package:mental_health/services/cloud_function/anxiety_data.dart';
@@ -114,13 +113,8 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               actions: <Widget>[
                 FlatButton(
                   onPressed: () {
-                    addAnxiety(
-                        box.read('name'),
-                        box.read('contactNumber'),
-                        box.read('gender'),
-                        box.read('address'),
-                        res(),
-                        box.read('profilePicture'));
+                    addAnxiety(box.read('name'), box.read('contactNumber'),
+                        res(), box.read('profilePicture'));
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const Survey()));
                   },

@@ -6,7 +6,6 @@ Future postDiary(
   String date,
   String name,
   String contactNumber,
-  String address,
   String profilePicture,
 ) async {
   final docUser = FirebaseFirestore.instance.collection('Diary').doc(date);
@@ -17,7 +16,6 @@ Future postDiary(
     'date': date,
     'name': name,
     'contactNumber': contactNumber,
-    'address': address,
     'profilePicture': profilePicture,
   };
 

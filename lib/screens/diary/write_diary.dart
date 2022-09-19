@@ -289,7 +289,7 @@ class _WriteDiaryState extends State<WriteDiary> {
                           getDate(),
                           box.read('name'),
                           box.read('contactNumber'),
-                          box.read('address'),
+                          // box.read('address'),
                           box.read('profilePicture'));
                       dialog('Upload Status', 'Uploaded Successfully!',
                           HomePage());
