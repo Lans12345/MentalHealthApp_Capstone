@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:mental_health/screens/home.dart';
 import 'package:mental_health/screens/survey/questions.dart';
 import 'package:mental_health/screens/survey/survey.dart';
 import 'package:mental_health/services/cloud_function/depression_data.dart';
@@ -125,7 +125,8 @@ class _SurveyDepressionState extends State<SurveyDepression> {
                         box.read('address'),
                         res(),
                         box.read('profilePicture'));
-                    Get.off(() => const Survey());
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const Survey()));
                   },
                   child: const Text(
                     'Continue',
