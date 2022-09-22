@@ -3,14 +3,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mental_health/screens/onboarding_screen.dart';
-import 'package:mental_health/services/firebase_options.dart';
+
 import 'package:mental_health/services/splash_screens/loadingHome.dart';
+
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+      name: "For You",
+      options: const FirebaseOptions(
+          apiKey: 'AIzaSyB6jfxxiUvEp84CASzHyLytbXJTCDrAzYg',
+          appId: '1:155538289966:android:0f82edc46d5724135536bf',
+          messagingSenderId: '155538289966',
+          projectId: 'tdclifecare-776b9'));
+
   runApp(const MyApp());
 }
 

@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAhMnN1D0Jo9oyKoKOEal1NLZA6Pcj__Aw',
-    appId: '1:777553213007:android:0ed09acc1a3f5004d95c3a',
-    messagingSenderId: '777553213007',
-    projectId: 'mental-health-ed56a',
-    storageBucket: 'mental-health-ed56a.appspot.com',
+    apiKey: 'AIzaSyB6jfxxiUvEp84CASzHyLytbXJTCDrAzYg',
+    appId: '1:155538289966:android:0f82edc46d5724135536bf',
+    messagingSenderId: '155538289966',
+    projectId: 'tdclifecare-776b9',
+    storageBucket: 'tdclifecare-776b9.appspot.com',
   );
 }
