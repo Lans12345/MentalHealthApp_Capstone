@@ -3,14 +3,15 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mental_health/auth/login_page.dart';
-import 'package:mental_health/services/error.dart';
-import 'package:mental_health/widgets/dialog.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:path/path.dart' as path;
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:get_storage/get_storage.dart';
+import '../services/error.dart';
+import '../widgets/dialog.dart';
 import '../widgets/image.dart';
+import '../widgets/text.dart';
+import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
   firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
 
-  late String fileName = '';
+  late String fileName = '';      //mu redirect ang gi butang sa user didto sa firestore
 
   late File imageFile;
 
@@ -83,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
         );
 
         await firebase_storage.FirebaseStorage.instance
-            .ref('Users/$fileName')
+            .ref('Users/$fileName')       //reference didto sa firebase
             .putFile(imageFile);
         imageURL = await firebase_storage.FirebaseStorage.instance
             .ref('Users/$fileName')

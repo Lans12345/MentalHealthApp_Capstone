@@ -6,7 +6,7 @@ Widget questions(String number, String question) {
   return Column(
     children: [
       const SizedBox(
-        height: 10,
+        height: 5,
       ),
       textBold('$number of 10', 12, Colors.black),
       const SizedBox(

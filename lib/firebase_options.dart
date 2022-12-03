@@ -60,3 +60,6 @@ class DefaultFirebaseOptions {
     storageBucket: 'tdclifecare-776b9.appspot.com',
   );
 }
+
+//basically mao ni akong gigamit para mag function ang firebase sa akong app
+//at the same time through flutter plugin lang ni siya

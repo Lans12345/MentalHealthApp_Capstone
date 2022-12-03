@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health/screens/home.dart';
+
+import '../../screens/home.dart';
+
 
 class LoadingScreenToHome extends StatefulWidget {
   @override

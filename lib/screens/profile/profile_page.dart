@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mental_health/widgets/appbar.dart';
 
-import 'package:mental_health/widgets/text.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/text.dart';
+
 
 class ProfilePage extends StatelessWidget {
   GetStorage box = GetStorage();

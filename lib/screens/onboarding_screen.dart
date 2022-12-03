@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:mental_health/services/splash_screens/loadingLogin.dart';
-import 'package:mental_health/widgets/onboarding_container.dart';
+
 import 'package:get/get.dart';
+import '../services/splash_screens/loadingLogin.dart';
 import '../widgets/image.dart';
+import '../widgets/onboarding_container.dart';
 import '../widgets/text.dart';
 
 class OnboardingPage extends StatelessWidget {

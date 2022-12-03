@@ -12,7 +12,7 @@ Widget homeContainer(
 ) {
   return Container(
     height: 180,
-    width: 320,
+    width: 350,
     decoration: BoxDecoration(
       gradient: LinearGradient(colors: [
         c1,
@@ -32,8 +32,8 @@ Widget homeContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          textBold(title, 28, Colors.white),
-          image('assets/images/' + path, 50, 50, EdgeInsets.zero),
+          textBold(title, 24, Colors.white),
+          image('assets/images/' + path, 100, 100, EdgeInsets.zero),
         ],
       ),
     ),

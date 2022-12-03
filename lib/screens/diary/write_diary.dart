@@ -1,15 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:mental_health/screens/diary/read_diary.dart';
-import 'package:mental_health/screens/home.dart';
-import 'package:mental_health/widgets/dialog.dart';
-import 'package:mental_health/widgets/error.dart';
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:intl/intl.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mental_health/screens/diary/read_diary.dart';
 import '../../services/cloud_function/postDiary.dart';
 import 'package:get/get.dart';
+
+import '../../services/error.dart';
+import '../../widgets/dialog.dart';
+import '../../widgets/text.dart';
+import '../home.dart';
 
 class WriteDiary extends StatefulWidget {
   @override
@@ -43,7 +46,7 @@ class _WriteDiaryState extends State<WriteDiary> {
     if (selectedDate == null) {
       return 'select date';
     } else {
-      return DateFormat('MM, dd, yyyy').format(selectedDate);
+      return DateFormat('MM-dd-yyyy').format(selectedDate);
     }
   }
 
@@ -80,14 +83,14 @@ class _WriteDiaryState extends State<WriteDiary> {
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: textBold('Writing Diary', 24, Colors.white),
+          title: textBold('Self Diary', 24, Colors.white),
           centerTitle: true,
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
+                Colors.blue,
                 Colors.blue[400]!,
-                Colors.pink[300]!,
-                Colors.purple[400]!,
+                Colors.blue[600]!,
               ]),
             ),
           ),
@@ -280,22 +283,16 @@ class _WriteDiaryState extends State<WriteDiary> {
                   ),
                   color: Colors.blue,
                   onPressed: () async {
-                    bool hasInternet =
-                        await InternetConnectionChecker().hasConnection;
-                    if (hasInternet == true) {
-                      postDiary(
-                          title,
-                          content,
-                          getDate(),
-                          box.read('name'),
-                          box.read('contactNumber'),
-                          // box.read('address'),
-                          box.read('profilePicture'));
-                      dialog('Upload Status', 'Uploaded Successfully!',
-                          HomePage());
-                    } else {
-                      error('No Internet Connection');
-                    }
+                    postDiary(
+                        title,
+                        content,
+                        getDate(),
+                        box.read('name'),
+                        box.read('contactNumber'),
+                        // box.read('address'),
+                        box.read('profilePicture'));
+                    dialog(
+                        'Upload Status', 'Uploaded Successfully!', HomePage());
                   },
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(80, 10, 80, 10),

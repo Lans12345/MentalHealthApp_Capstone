@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:get_storage/get_storage.dart';
+
+import '../../widgets/text.dart';
 
 class ReadDiary extends StatelessWidget {
   GetStorage box = GetStorage();

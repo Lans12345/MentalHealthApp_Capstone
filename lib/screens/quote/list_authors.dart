@@ -1,3 +1,6 @@
+//Variables are containers for storing information
+//if e reference nako ang Var Auth mugawas na dayun siya sa
+//box container
 var author = [
   'Audrey Hepburn',
   'Maya Angelou',

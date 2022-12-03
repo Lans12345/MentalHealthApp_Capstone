@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/widgets/image.dart';
 import 'package:mental_health/widgets/text.dart';
+
+import 'image.dart';
 
 Widget onboardingContainer(String imageSource, String title, String num) {
   return Container(

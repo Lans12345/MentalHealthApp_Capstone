@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mental_health/auth/login_page.dart';
-import 'package:mental_health/screens/diary/write_diary.dart';
-import 'package:mental_health/screens/profile/profile_page.dart';
-import 'package:mental_health/screens/quote/view_quotes.dart';
-import 'package:mental_health/screens/survey/survey.dart';
-import 'package:mental_health/services/error.dart';
-import 'package:mental_health/widgets/appbar.dart';
-import 'package:mental_health/widgets/dialog.dart';
-import 'package:mental_health/widgets/home_container.dart';
-import 'package:mental_health/widgets/image.dart';
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mental_health/screens/Contact/contact.dart';
+import 'package:mental_health/screens/profile/profile_page.dart';
+import 'package:mental_health/screens/quote/view_quotes.dart';
+import 'package:mental_health/screens/survey/survey.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import '../auth/login_page.dart';
+import '../services/error.dart';
+import '../widgets/appbar.dart';
+import '../widgets/dialog.dart';
+import '../widgets/home_container.dart';
+import '../widgets/image.dart';
+import '../widgets/text.dart';
+import 'diary/write_diary.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -63,8 +66,8 @@ class _HomePageState extends State<HomePage> {
                 UserAccountsDrawerHeader(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
-                      Colors.blue[200]!,
-                      Colors.blue[300]!,
+                      Colors.amber[200]!,
+                      Colors.purple[300]!,
                       Colors.blue[400]!,
                     ]),
                   ),
@@ -132,8 +135,12 @@ class _HomePageState extends State<HomePage> {
                       error('No Internet Connection');
                     }
                   },
-                  child: homeContainer('diary.png', 'Self Diary',
-                      Colors.blue[100]!, Colors.blue[200]!, Colors.blue[200]!),
+                  child: homeContainer(
+                      'woman.png',
+                      'Self Diary',
+                      Colors.lightBlue,
+                      Colors.lightBlue,
+                      Colors.lightBlue[600]!),
                 ),
                 const SizedBox(
                   height: 20,
@@ -142,8 +149,12 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Get.to(() => ViewQuote(), transition: Transition.zoom);
                   },
-                  child: homeContainer('quotes.png', "Quote's Motivator",
-                      Colors.pink[100]!, Colors.pink[200]!, Colors.pink[200]!),
+                  child: homeContainer(
+                      'motiviate.png',
+                      "Quote's Motivator",
+                      Colors.purpleAccent[700]!,
+                      Colors.purpleAccent[700]!,
+                      Colors.purpleAccent[400]!),
                 ),
                 const SizedBox(
                   height: 20,
@@ -153,26 +164,27 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const Survey()));
                   },
-                  child: homeContainer('qa.png', 'MHA Based QA',
-                      Colors.blue[100]!, Colors.blue[200]!, Colors.blue[200]!),
+                  child: homeContainer(
+                      'people.png',
+                      'MHA Based QA',
+                      Colors.amber[800]!,
+                      Colors.amber[800]!,
+                      Colors.amber[700]!),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 GestureDetector(
-                  onTap: () async {
-                    String driverContactNumber = '09090104355';
-                    final _text = 'tel:$driverContactNumber';
-                    if (await canLaunch(_text)) {
-                      await launch(_text);
-                    }
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const Contact()));
                   },
                   child: homeContainer(
-                      'phone.png',
-                      'TCD Support',
-                      Colors.purple[100]!,
-                      Colors.purple[200]!,
-                      Colors.purple[200]!),
+                      'voice.png',
+                      'TDC Support',
+                      Colors.indigo[900]!,
+                      Colors.indigo[900]!,
+                      Colors.indigo[800]!),
                 ),
                 const SizedBox(
                   height: 30,

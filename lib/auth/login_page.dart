@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/auth/signup_page.dart';
-import 'package:mental_health/screens/admin/admin_home.dart';
-import 'package:mental_health/screens/home.dart';
-import 'package:mental_health/services/authentication/anonymous.dart';
-import 'package:mental_health/services/error.dart';
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:get/get.dart';
+import 'package:mental_health/auth/signup_page.dart';
+import '../screens/admin/admin_home.dart';
+import '../screens/home.dart';
+import '../services/authentication/anonymous.dart';
 import '../services/authentication/googleLogin.dart';
+import '../services/error.dart';
 import '../widgets/image.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../widgets/text.dart';
 
 class LoginPage extends StatelessWidget {
   late String username = '';
   late String password = '';
 
-  GetStorage box = GetStorage();
+  GetStorage box =
+      GetStorage(); //local database, matic na, para pud ni sa anonymous sign in
 
   late String adminPassword;
 

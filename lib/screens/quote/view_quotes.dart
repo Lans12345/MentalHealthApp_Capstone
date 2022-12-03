@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/screens/quote/list_authors.dart';
-import 'package:mental_health/screens/quote/list_quotes.dart';
-import 'package:mental_health/widgets/appbar.dart';
-import 'package:mental_health/widgets/text.dart';
+
+import '../../widgets/appbar.dart';
+import '../../widgets/text.dart';
+import 'list_authors.dart';
+import 'list_quotes.dart';
+
 
 class ViewQuote extends StatelessWidget {
   @override
@@ -21,9 +23,9 @@ class ViewQuote extends StatelessWidget {
               ),
               trailing: const Icon(
                 Icons.bookmark_added,
-                color: Colors.green,
+                color: Colors.purple,
               ),
-              tileColor: Colors.white,
+              tileColor: Colors.purple[200],
               title: textReg('"${quotes[index]}"', 24, Colors.black),
               subtitle: Padding(
                 padding: const EdgeInsets.all(10.0),

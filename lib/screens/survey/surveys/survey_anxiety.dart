@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/screens/survey/questions.dart';
-import 'package:mental_health/screens/survey/survey.dart';
-import 'package:mental_health/services/cloud_function/anxiety_data.dart';
-import 'package:mental_health/widgets/appbar.dart';
-import 'package:mental_health/widgets/text.dart';
+
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../../../services/cloud_function/anxiety_data.dart';
+import '../../../widgets/appbar.dart';
+import '../../../widgets/text.dart';
+import '../questions.dart';
+import '../survey.dart';
 
 class SurveyAnxiety extends StatefulWidget {
   const SurveyAnxiety({Key? key}) : super(key: key);
@@ -74,7 +76,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
                           GaugeRange(
                               startValue: 0,
                               endValue: 33,
-                              color: const Color(0xFF00AB47),
+                              color: const Color(0xFF5BA85B),
                               label: 'Mild',
                               sizeUnit: GaugeSizeUnit.factor,
                               labelStyle: const GaugeTextStyle(
@@ -84,7 +86,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
                           GaugeRange(
                             startValue: 33,
                             endValue: 66,
-                            color: const Color(0xFFFFBA00),
+                            color: const Color(0xFFFFD54F),
                             label: 'Moderate',
                             labelStyle: const GaugeTextStyle(
                                 fontFamily: 'Times', fontSize: 20),
@@ -95,7 +97,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
                           GaugeRange(
                             startValue: 66,
                             endValue: 99,
-                            color: const Color(0xFFFE2A25),
+                            color: const Color(0xFFE57373),
                             label: 'Severe',
                             labelStyle: const GaugeTextStyle(
                                 fontFamily: 'Times', fontSize: 20),
@@ -208,7 +210,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               Visibility(
                 visible: _isVisible,
                 child: MaterialButton(
-                  color: Colors.blue,
+                  color: Colors.amber,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -237,7 +239,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               Visibility(
                 visible: _isVisible,
                 child: MaterialButton(
-                  color: Colors.blue,
+                  color: Colors.amber,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -267,7 +269,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               Visibility(
                 visible: _isVisible,
                 child: MaterialButton(
-                  color: Colors.blue,
+                  color: Colors.amber,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
@@ -296,7 +298,7 @@ class _SurveyAnxietyState extends State<SurveyAnxiety> {
               Visibility(
                 visible: _isVisible,
                 child: MaterialButton(
-                  color: Colors.blue,
+                  color: Colors.amber,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),

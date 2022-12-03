@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health/screens/home.dart';
+
+import 'package:get/get.dart';
 import 'package:mental_health/screens/survey/surveys/survey_anxiety.dart';
 import 'package:mental_health/screens/survey/surveys/survey_depression.dart';
 import 'package:mental_health/screens/survey/surveys/survey_stress.dart';
-import 'package:mental_health/widgets/appbar.dart';
-import 'package:mental_health/widgets/button.dart';
-import 'package:mental_health/widgets/text.dart';
-import 'package:get/get.dart';
+
+import '../../widgets/appbar.dart';
+import '../../widgets/button.dart';
+import '../../widgets/text.dart';
+import '../home.dart';
 
 class Survey extends StatefulWidget {
   const Survey({Key? key}) : super(key: key);
@@ -46,8 +48,8 @@ class _SurveyState extends State<Survey> {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: appbar('Survey'),
+        backgroundColor: Colors.white,
+        appBar: appbar('Screening'),
         body: Center(
           child: Column(
             children: [
@@ -71,7 +73,7 @@ class _SurveyState extends State<Survey> {
                   Get.off(() => const SurveyStress(),
                       transition: Transition.zoom);
                 },
-                color: Colors.blue[200]!,
+                color: Colors.amber[300]!,
                 label: 'STRESS',
               ),
               const SizedBox(
@@ -82,7 +84,7 @@ class _SurveyState extends State<Survey> {
                   Get.to(() => const SurveyAnxiety(),
                       transition: Transition.zoom);
                 },
-                color: Colors.green[200]!,
+                color: Colors.amber[400]!,
                 label: 'ANXIETY',
               ),
               const SizedBox(
@@ -92,13 +94,13 @@ class _SurveyState extends State<Survey> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                color: Colors.purple[200],
+                color: Colors.amber,
                 onPressed: () {
                   Get.to(() => const SurveyDepression(),
                       transition: Transition.zoom);
                 },
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
+                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                   child: textReg(
                     'DEPRESSION',
                     18,
@@ -111,7 +113,7 @@ class _SurveyState extends State<Survey> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                color: Colors.teal,
+                color: Colors.black,
                 onPressed: () {
                   Get.to(() => HomePage(), transition: Transition.zoom);
                 },

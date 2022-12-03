@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health/auth/login_page.dart';
+
+import '../../auth/login_page.dart';
+
 
 class LoadingScreenToLogIn extends StatefulWidget {
   @override
@@ -21,11 +23,11 @@ class _ScreenState extends State<LoadingScreenToLogIn> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, //code para mawala to ang debug nga pula sa top right sa app screen
       home: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-          child: SingleChildScrollView(
+          child: SingleChildScrollView(   //This widget is useful when you have a single box that will normally be entirely visible,
             child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

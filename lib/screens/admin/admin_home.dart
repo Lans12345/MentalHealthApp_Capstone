@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health/widgets/image.dart';
 
 import '../../auth/login_page.dart';
 import '../../widgets/dialog.dart';
+import '../../widgets/image.dart';
 import '../../widgets/text.dart';
 
 class AdminHome extends StatelessWidget {
@@ -12,11 +12,15 @@ class AdminHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      //Tab bar para ma divide into two section ang diary ug MHA result
+      length:
+          2, //DefaultTabController is an inherited widget that is used to share a
       child: Scaffold(
+        //TabController with a TabBar or a TabBarView.
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          bottom: TabBar(tabs: [
+          //
+          bottom: TabBar(indicatorColor: Colors.white, tabs: [
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Column(
@@ -57,9 +61,9 @@ class AdminHome extends StatelessWidget {
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                Colors.blue[200]!,
-                Colors.pink[200]!,
-                Colors.purple[200]!,
+                Colors.lightBlue[300]!,
+                Colors.lightBlue[400]!,
+                Colors.lightBlue,
               ]),
             ),
           ),
