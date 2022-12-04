@@ -204,8 +204,7 @@ class LoginPage extends StatelessWidget {
                                   if (adminPassword == 'admin123') {
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                const AdminHome()));
+                                            builder: (context) => AdminHome()));
                                   } else {
                                     showDialog(
                                       context: context,
