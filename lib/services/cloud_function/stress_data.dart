@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 //mao ni siya ang code para e reference sa pag get ug data gikan sa firestore
 //let you automatically run backend code in response to events triggered by Firebase features and HTTPS requests.
 // Your code is stored in Google's cloud and runs in a managed environment.
@@ -14,6 +15,7 @@ Future addStress(String name, String contactNumber, String result,
     'profilePicture': profilePicture,
     'id': docUser.id,
     'type': 'Stress',
+    'dateTime': DateTime.now(),
   };
 
   await docUser.set(json);

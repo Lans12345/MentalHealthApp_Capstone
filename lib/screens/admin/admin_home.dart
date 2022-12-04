@@ -133,6 +133,7 @@ class _AdminHomeState extends State<AdminHome> {
                             'name',
                             isEqualTo: box.read('name'),
                           )
+                          .orderBy('dateTime')
                           .snapshots(),
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -226,6 +227,7 @@ class _AdminHomeState extends State<AdminHome> {
                             'name',
                             isEqualTo: box.read('name'),
                           )
+                          .orderBy('dateTime')
                           .snapshots(),
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {

@@ -17,6 +17,7 @@ Future postDiary(
     'name': name,
     'contactNumber': contactNumber,
     'profilePicture': profilePicture,
+    'dateTime': DateTime.now(),
   };
 
   await docUser.set(json);

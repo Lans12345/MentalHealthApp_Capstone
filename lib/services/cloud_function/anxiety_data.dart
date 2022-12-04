@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 //Asynchronous programming is a technique that enables your program to start a potentially
 // long-running task and still be able to be responsive to other events while that
 // task runs, rather than having to wait until that task has finished.
@@ -14,6 +15,7 @@ Future addAnxiety(String name, String contactNumber, String result,
     'profilePicture': profilePicture,
     'id': docUser.id,
     'type': 'Anxiety',
+    'dateTime': DateTime.now(),
   };
 
   await docUser.set(json);

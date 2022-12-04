@@ -11,6 +11,7 @@ Future addDepression(String name, String contactNumber, String result,
     'profilePicture': profilePicture,
     'id': docUser.id,
     'type': 'Depression',
+    'dateTime': DateTime.now(),
   };
 
   await docUser.set(json);
